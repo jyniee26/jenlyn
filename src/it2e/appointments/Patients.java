@@ -66,10 +66,33 @@ public class Patients {
      }
 
     private void editPatient() {
+        int p_id;
+        do{
+            System.out.print("\nPatient ID: ");
+            p_id = scan.nextInt();
+            if(!conf.doesIDExist("patients", p_id)){
+                System.out.println("Patient ID Doesn't Exist.");
+            }
+        }while(!conf.doesIDExist("patients", p_id));
+        scan.nextLine();
         
-     }
+        System.out.println("Enter Appointment Details:");
+        
+        System.out.print("Patient Name: ");
+        String name = scan.nextLine();
+        
+        System.out.print("Email: ");
+        String email = scan.nextLine();
+        
+        String sql = "UPDATE patients SET name = ?, email = ? WHERE id = ?";
+        conf.updateRecord(sql, name, email, p_id);
+    }
 
     private void deletePatient() {
+        System.out.print("Enter ID you want to delete: ");
+        int id = scan.nextInt();
         
+        String sql = "DELETE FROM patients WHERE id = ?";
+        conf.deleteRecord(sql, id);
     }
 }
