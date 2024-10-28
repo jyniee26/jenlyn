@@ -57,7 +57,7 @@ public class Patients {
         conf.addRecord(sql, name, email);
     }
 
-    private void viewPatients() {
+    public void viewPatients() {
         String query = "SELECT * FROM patients";
         String[] Headers = {"ID", "Patient Name", "Email"};
         String[] Columns = {"id", "name", "email"};
@@ -68,7 +68,7 @@ public class Patients {
     private void editPatient() {
         int p_id;
         do{
-            System.out.print("\nPatient ID: ");
+            System.out.print("\nEnter Patient ID: ");
             p_id = scan.nextInt();
             if(!conf.doesIDExist("patients", p_id)){
                 System.out.println("Patient ID Doesn't Exist.");
@@ -76,12 +76,12 @@ public class Patients {
         }while(!conf.doesIDExist("patients", p_id));
         scan.nextLine();
         
-        System.out.println("Enter Appointment Details:");
+        System.out.println("Enter New Appointment Details:");
         
-        System.out.print("Patient Name: ");
+        System.out.print("New Patient Name: ");
         String name = scan.nextLine();
         
-        System.out.print("Email: ");
+        System.out.print("New Email: ");
         String email = scan.nextLine();
         
         String sql = "UPDATE patients SET name = ?, email = ? WHERE id = ?";

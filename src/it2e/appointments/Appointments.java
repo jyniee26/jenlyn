@@ -24,7 +24,7 @@ public class Appointments {
 
                 switch (option) {
                     case 1:
-                        System.out.println("\n   --- ADDING NEW APPOINTMENT ---\n");
+                        System.out.println("\n   --- SCHEDULE APPOINTMENT ---\n");
                         scheduleAppointment();
                         break;
                     case 2:
