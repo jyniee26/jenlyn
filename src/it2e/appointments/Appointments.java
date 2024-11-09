@@ -29,10 +29,8 @@ public class Appointments {
                         break;
                     case 2:
                         System.out.println("\n\t\t\t\t\t\t\t\t   --- APPOINTMENTS LIST ---");
-                        String query = "SELECT app.id, pat.name, app.a_type, app.p_doctor, app.a_date, app.a_status"
-                                + " FROM appointments app"
-                                + " JOIN patients pat ON app.patient_id = pat.id";
-                        viewAppointments(query);
+                        
+                        viewAppointments();
                         break;
                     case 3:
                         System.out.println("\n   --- EDITING AN APPOINTMENT ---\n");
@@ -59,6 +57,8 @@ public class Appointments {
     public void scheduleAppointment() {
         System.out.println("Enter Appointment Details:");
         
+        Patients pat = new Patients();
+        pat.viewPatients();
         int p_id;
         do{
             System.out.print("\nPatient ID: ");
@@ -85,8 +85,11 @@ public class Appointments {
         conf.addRecord(sql, p_id, type, doc, date, stats);
     }
 
-    public void viewAppointments(String query) {
-         
+    public void viewAppointments() {
+        String query = "SELECT app.id, pat.name, app.a_type, app.p_doctor, app.a_date, app.a_status"
+                              + " FROM appointments app"
+                              + " JOIN patients pat ON app.patient_id = pat.id";
+        
         String[] Headers = {"ID", "Patient Name", "Appointment Type", "Doctor", "Appointment Date", "Appointment Status"};
         String[] Columns = {"id", "name", "a_type", "p_doctor", "a_date", "a_status"};
         
@@ -96,6 +99,9 @@ public class Appointments {
     public void editAppointment() {
         int id;        
         boolean idExists;
+        
+        viewAppointments();
+        
         do{
             System.out.print("Student ID you want to delete: ");
             id = scan.nextInt();
@@ -105,9 +111,6 @@ public class Appointments {
                 System.out.println("Student ID Doesn't Exist.\n");
             }
         }while(!idExists);
-        
-        String query = "SELECT * FROM appointments WHERE id = " + id;
-        viewAppointments(query);
         
         System.out.println("Enter Appointment Details:");
         
@@ -138,6 +141,8 @@ public class Appointments {
     }
 
     public void deleteAppointment() {
+        viewAppointments();
+        
         System.out.print("Enter ID you want to delete: ");
         int id = scan.nextInt();
         

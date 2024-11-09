@@ -67,6 +67,9 @@ public class Patients {
 
     private void editPatient() {
         int p_id;
+        
+        viewPatients(); 
+        
         do{
             System.out.print("\nEnter Patient ID: ");
             p_id = scan.nextInt();
@@ -89,6 +92,7 @@ public class Patients {
     }
 
     private void deletePatient() {
+        viewPatients(); 
         System.out.print("Enter ID you want to delete: ");
         int id = scan.nextInt();
         
