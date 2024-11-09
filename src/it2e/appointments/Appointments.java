@@ -29,7 +29,9 @@ public class Appointments {
                         break;
                     case 2:
                         System.out.println("\n\t\t\t\t\t\t\t\t   --- APPOINTMENTS LIST ---");
-                        String query = "SELECT * FROM appointments";
+                        String query = "SELECT app.id, pat.name, app.a_type, app.p_doctor, app.a_date, app.a_status"
+                                + " FROM appointments app"
+                                + " JOIN patients pat ON app.patient_id = pat.id";
                         viewAppointments(query);
                         break;
                     case 3:
@@ -85,8 +87,8 @@ public class Appointments {
 
     public void viewAppointments(String query) {
          
-        String[] Headers = {"ID", "Patient ID", "Appointment Type", "Doctor", "Appointment Date", "Appointment Status"};
-        String[] Columns = {"id", "patient_id", "a_type", "p_doctor", "a_date", "a_status"};
+        String[] Headers = {"ID", "Patient Name", "Appointment Type", "Doctor", "Appointment Date", "Appointment Status"};
+        String[] Columns = {"id", "name", "a_type", "p_doctor", "a_date", "a_status"};
         
         conf.viewRecords(query, Headers, Columns);
     }
