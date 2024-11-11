@@ -9,7 +9,7 @@ public class Patients {
     public void patientConfig() {
         int option;
         do {
-            System.out.println("\n\t--- Patients Menu ---\t");
+            System.out.println("\n\t Patients \t");
             System.out.println("1. Add Patient");
             System.out.println("2. View Patients");
             System.out.println("3. Edit Patient");
@@ -22,11 +22,11 @@ public class Patients {
 
             switch (option) {
                 case 1:
-                    System.out.println("\n   --- ADDING NEW PATIENT ---\n");
+                    System.out.println("\n   'ADDING NEW PATIENT' \n");
                     addPatient();
                     break;
                 case 2:
-                    System.out.println("\n\t\t\t      --- PATIENTS LIST ---");
+                    System.out.println("\n\t\t\t   'PATIENTS LIST'");
                     viewPatients(); 
                     break;
                 case 3:
@@ -79,7 +79,7 @@ public class Patients {
         }while(!conf.doesIDExist("patients", p_id));
         scan.nextLine();
         
-        System.out.println("Enter New Appointment Details:");
+        System.out.println("Enter New Patient Details:");
         
         System.out.print("New Patient Name: ");
         String name = scan.nextLine();

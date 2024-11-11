@@ -17,7 +17,7 @@ public class IT2EAppointments {
 
         do {    
             try {
-                System.out.println("\n   + Appointment Records System +\n");
+                System.out.println("\n  APPOINTMENT RECORDS SYSTEM \n");
                 System.out.println("1. Patients");
                 System.out.println("2. Appointments");
                 System.out.println("3. Generate Reports");
@@ -54,7 +54,7 @@ public class IT2EAppointments {
     
     static void individualReports(){
         
-        System.out.println("\n\t\t\t      --- PATIENTS LIST ---");
+        System.out.println("\n\t\t\t  PATIENTS LIST");
         patient.viewPatients();
         
         int p_id;
@@ -65,7 +65,7 @@ public class IT2EAppointments {
                 System.out.println("Patient ID Doesn't Exist.");
             }
         }while(!conf.doesIDExist("patients", p_id));
-        System.out.println("=============================================================================================================================================");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.println("\n\t\t\t\t\t\t\t   - INDIVIDUAL REPORT -");
         
         System.out.println("\nPatient ID    : " + p_id);
@@ -76,7 +76,7 @@ public class IT2EAppointments {
         
         if (conf.isTableEmpty("appointments WHERE patient_id = " + p_id)) {
             System.out.println("Patient Has no Appointment History.");
-            System.out.println("=============================================================================================================================================");
+            System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
         } else {
             System.out.println("Appointment History: ");
             String sql = "SELECT appointments.id, appointments.a_type, appointments.p_doctor, appointments.a_date, appointments.a_status " +
@@ -88,7 +88,7 @@ public class IT2EAppointments {
             String[] Columns = {"id", "a_type", "p_doctor", "a_date", "a_status"};
 
             conf.viewRecords(sql, Headers, Columns);
-            System.out.println("\n=============================================================================================================================================");
+            System.out.println("\n-----------------------------------------------------------------------------------------------------------------------------------------------------");
         }
     }
 }

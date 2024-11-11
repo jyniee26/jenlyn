@@ -103,25 +103,25 @@ public class Appointments {
         viewAppointments();
         
         do{
-            System.out.print("Student ID you want to delete: ");
+            System.out.print("Appointment ID you want to edit: ");
             id = scan.nextInt();
             
-            idExists = conf.doesIDExist("students", id);
+            idExists = conf.doesIDExist("appointments", id);
             if(!idExists){
-                System.out.println("Student ID Doesn't Exist.\n");
+                System.out.println("Appointment ID Doesn't Exist.\n");
             }
         }while(!idExists);
         
         System.out.println("Enter Appointment Details:");
         
         int p_id;
-        do{
+       /* do{
             System.out.print("\nNew Patient ID: ");
             p_id = scan.nextInt();
             if(!conf.doesIDExist("patients", p_id)){
                 System.out.println("Patient ID Doesn't Exist.");
             }
-        }while(!conf.doesIDExist("patients", p_id));
+        }while(!conf.doesIDExist("patients", p_id));*/
         scan.nextLine();
         
         System.out.print("New Appointment Type: ");
@@ -136,8 +136,8 @@ public class Appointments {
         System.out.print("New Appointment Status: ");
         String stats = scan.nextLine();
         
-        String sql = "UPDATE appointments SET patient_id = ?, a_type = ?, p_doctor = ?, a_date = ?, a_status = ? WHERE id = ?";       
-        conf.updateRecord(sql, p_id, type, doc, date, stats, id); 
+        String sql = "UPDATE appointments SET a_type = ?, p_doctor = ?, a_date = ?, a_status = ? WHERE id = ?";       
+        conf.updateRecord(sql, type, doc, date, stats, id); 
     }
 
     public void deleteAppointment() {
